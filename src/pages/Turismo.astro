@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.tsx';
+import VideoPlayer from '../components/VideoPlayer.tsx';
+
+// CORRECCIÓN FINAL: Todas las rutas, incluyendo 'thumb', apuntan a /public
+const images = [
+    { src: '/img/turismo/machu-picchu.jpg', thumb: '/img/turismo/machu-picchu.jpg', alt: 'Machu Picchu', title: 'Machu Picchu: Joya Inca' },
+    { src: '/img/turismo/nazca.jpg', thumb: '/img/turismo/nazca.jpg', alt: 'Líneas de Nazca', title: 'Misterio de las Líneas de Nazca' },
+    { src: '/img/turismo/cusco.jpg', thumb: '/img/turismo/cusco.jpg', alt: 'Cusco', title: 'Cusco: El Ombligo del Mundo' },
+    { src: '/img/turismo/arequipa.jpg', thumb: '/img/turismo/arequipa.jpg', alt: 'Arequipa', title: 'Arequipa: La Ciudad Blanca' },
+    { src: '/img/turismo/trujillo.jpg', thumb: '/img/turismo/trujillo.jpg', alt: 'Trujillo', title: 'Trujillo y la Ruta Moche' },
+    { src: '/img/turismo/cajamarca.jpg', thumb: '/img/turismo/cajamarca.jpg', alt: 'Cajamarca', title: 'Cajamarca: Historia y Carnaval' },
+];
+const videoTurismo = '/videos/turismo.mp4';
+const videoTurismo2 = '/videos/turismo2.mp4';
+---
+
+<Layout title="Turismo en Perú">
+    <div class="page-container turismo-page">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Destinos Inolvidables</h1>
+            <p>Lugares que no solo se visitan, se viven y se sienten para siempre.</p>
+        </header>
+
+        <section class="section-container" data-aos="fade-up">
+            <p class="intro-text">
+                Perú es un destino que cautiva a viajeros de todo el mundo. Aquí, la historia antigua cobra vida en ciudadelas de piedra y los misterios de civilizaciones pasadas se dibujan en el desierto.
+            </p>
+        </section>
+
+        <section class="section-container">
+            <Gallery images={images} client:visible />
+        </section>
+
+        <section class="section-container">
+            <VideoPlayer src={videoTurismo} title="La Diversidad del Turismo Peruano" client:visible />
+        </section>
+
+        <section class="section-container">
+            <VideoPlayer src={videoTurismo2} title="La Diversidad del Turismo Peruano" client:visible />
+        </section>
+        
+    </div>
+</Layout>

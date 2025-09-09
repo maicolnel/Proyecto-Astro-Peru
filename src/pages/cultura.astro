@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.tsx';
+
+// CORRECCIÓN: Las rutas de 'thumb' ahora también apuntan a /public
+const images = [
+    { src: '/img/cultura/danzas.jpg', thumb: '/img/cultura/danzas.jpg', alt: 'Danzas Típicas', title: 'Danzas Llenas de Historia' },
+    { src: '/img/cultura/textiles.jpg', thumb: '/img/cultura/textiles.jpg', alt: 'Textiles Andinos', title: 'El Arte en los Hilos' },
+    { src: '/img/cultura/inti-raymi.jpg', thumb: '/img/cultura/inti-raymi.jpg', alt: 'Fiesta del Inti Raymi', title: 'Fiestas Ancestrales' },
+];
+--- {/* <-- CORRECCIÓN: Faltaba este cierre */}
+
+<Layout title="Cultura Peruana">
+    <div class="page-container">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Cultura Viva</h1>
+            <p>Un legado milenario que se respira en cada rincón del país.</p>
+        </header>
+        <section class="section-container">
+            <Gallery images={images} client:visible />
+        </section>
+    </div>
+</Layout>

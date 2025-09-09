@@ -1,0 +1,63 @@
+/* ==== ESTILOS RESPONSIVOS ==== */
+
+@include respond-to(lg) {
+  .hero-title { font-size: 3.5rem; }
+  
+  .member-profile-card {
+    flex-direction: column !important; /* Apila en tablets */
+    text-align: center;
+  }
+  
+  .contact-content-wrapper { flex-direction: column; }
+}
+
+@include respond-to(md) {
+  .page-header h1 { font-size: 2.5rem; }
+  .section-title { font-size: 2.2rem; }
+  .hero-title { font-size: 2.8rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+
+  /* === Navbar para móvil === */
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 80px); /* Altura completa menos el navbar */
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(5px);
+    transition: left 0.4s ease-in-out;
+    padding-top: 2rem;
+    &.active { left: 0; }
+  }
+  .nav-link { width: 100%; text-align: center; padding: 1.5rem 0; font-size: 1.2rem; }
+  .nav-dropdown {
+    width: 100%;
+    text-align: center;
+    .nav-link-dropdown-toggle { display: block; padding: 1.5rem 0; }
+    .dropdown-content {
+      position: static;
+      display: none; // Se muestra con JS o con :focus-within si se usa un checkbox
+      box-shadow: none;
+      background-color: $background-color;
+      a { text-align: center; }
+    }
+    &:hover .dropdown-content { display: block; } // Simple para hover, JS es mejor para tap
+  }
+  .menu-icon { display: block; }
+
+  /* === Grids === */
+  .embajadores-grid { grid-template-columns: 1fr; }
+  .portal-grid { grid-template-columns: 1fr; }
+  .universidades-logos-grid { gap: 2rem; }
+
+  /* === Timeline === */
+  .timeline-container::after { left: 20px; }
+  .timeline-item { width: 100%; padding-left: 50px; padding-right: 1rem; &:nth-child(even) { left: 0; } }
+  .timeline-item::after { left: 10px; }
+  
+  /* === Otros === */
+  .music-track-item { flex-direction: column; text-align: center; }
+  .footer-container { flex-direction: column; text-align: center; }
+}

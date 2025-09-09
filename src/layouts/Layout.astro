@@ -1,0 +1,50 @@
+---
+import Navbar from '../components/Navbar.tsx';
+import Footer from '../components/Footer.tsx';
+
+// Importamos los estilos globales para que se apliquen a todas las páginas
+import '../styles/index.scss';
+
+interface Props {
+	title: string;
+  description?: string;
+}
+const { 
+  title, 
+  description = "Un viaje por la cultura, sabores y paisajes de Perú, presentado por estudiantes de intercambio en Barranquilla." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.svg" />
+		<title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lora:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/libs/lightgallery/lightgallery.min.css" />
+	</head>
+	<body>
+		<Navbar client:load />
+		<main>
+			<slot />
+		</main>
+		<Footer client:visible />
+
+    <script id="lightgallery-script" src="/libs/lightgallery/lightgallery.min.js"></script>
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 50,
+      });
+    </script>
+	</body>
+</html>

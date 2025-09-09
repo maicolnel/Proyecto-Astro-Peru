@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.tsx';
+
+// CORRECCIÓN: Rutas apuntando a la carpeta /public
+const cajamarcaImages = [
+    { src: '/img/turismo/cajamarca.jpg', thumb: '/img/turismo/cajamarca.jpg', alt: 'Plaza de Armas de Cajamarca', title: 'Plaza de Armas' },
+    { src: '/img/cultura/carnavales.jpg', thumb: '/img/cultura/carnavales.jpg', alt: 'Carnaval de Cajamarca', title: 'El Famoso Carnaval' },
+];
+---
+
+<Layout title="Cajamarca">
+    <div class="page-container content-page">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Cajamarca</h1>
+            <p>La sonrisa de los Andes: historia, carnaval y paisajes verdes.</p>
+        </header>
+
+        <section class="section-container content-body">
+            <article data-aos="fade-up">
+                <h2>Un Lugar Decisivo en la Historia</h2>
+                <p>
+                    Cajamarca ocupa un lugar crucial en la historia de América. Fue aquí donde en 1532 se encontraron el Inca Atahualpa y el conquistador Francisco Pizarro, un evento que cambiaría para siempre el destino del continente. El "Cuarto del Rescate" es hoy un vestigio silencioso de aquel encuentro.
+                </p>
+            </article>
+
+            <article data-aos="fade-up">
+                <h2>La Capital del Carnaval Peruano</h2>
+                <p>
+                    Cada febrero, la tranquila ciudad andina se transforma en una explosión de color, música y alegría. El Carnaval de Cajamarca es uno de los más famosos y concurridos del Perú, donde las calles se llenan de desfiles, patrullas y comparsas que bailan al ritmo del "silulo".
+                </p>
+            </article>
+
+            <div data-aos="fade-up">
+                <Gallery images={cajamarcaImages} client:visible />
+            </div>
+        </section>
+    </div>
+</Layout>

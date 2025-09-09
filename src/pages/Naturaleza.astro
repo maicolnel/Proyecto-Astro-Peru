@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.tsx';
+import VideoPlayer from '../components/VideoPlayer.tsx';
+
+// CORRECCIÓN: Rutas apuntando a la carpeta /public
+const images = [
+    { src: '/img/naturaleza/amazonas.jpg', thumb: '/img/naturaleza/amazonas.jpg', alt: 'Río Amazonas', title: 'Selva Amazónica' },
+    { src: '/img/naturaleza/andes.jpg', thumb: '/img/naturaleza/andes.jpg', alt: 'Cordillera de los Andes', title: 'Andes Majestuosos' },
+    { src: '/img/naturaleza/lago-titicaca.jpg', thumb: '/img/naturaleza/lago-titicaca.jpg', alt: 'Lago Titicaca', title: 'Lago Titicaca, Místico' },
+    { src: '/img/naturaleza/colca.jpg', thumb: '/img/naturaleza/colca.jpg', alt: 'Cañón del Colca', title: 'La Profundidad del Colca' },
+    { src: '/img/naturaleza/desierto-ica.jpg', thumb: '/img/naturaleza/desierto-ica.jpg', alt: 'Desierto de Ica', title: 'El Oasis de Huacachina' },
+    { src: '/img/naturaleza/selva-central.jpg', thumb: '/img/naturaleza/selva-central.jpg', alt: 'Selva Central', title: 'Corazón Verde del Perú' },
+];
+const videoNaturaleza = '/videos/naturaleza.mp4';
+---
+
+<Layout title="Naturaleza del Perú">
+    <div class="page-container naturaleza-page">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Paisajes que Asombran</h1>
+            <p>Perú es uno de los países más megadiversos del mundo. Aquí, la naturaleza se expresa sin límites.</p>
+        </header>
+
+        <section class="section-container" data-aos="fade-up">
+            <p class="intro-text">
+                Desde las áridas dunas de la costa del Pacífico, pasando por las imponentes cumbres de la Cordillera de los Andes, hasta la infinita exuberancia de la selva amazónica. Explorar Perú es descubrir un planeta en un solo país.
+            </p>
+        </section>
+
+        <section class="section-container">
+            {/* CORRECCIÓN: Se añade client:visible para que el componente interactivo funcione */}
+            <Gallery images={images} client:visible />
+        </section>
+
+        <section class="section-container">
+            <VideoPlayer src={videoNaturaleza} title="La Diversidad del Paisaje Peruano" client:visible />
+        </section>
+    </div>
+</Layout>

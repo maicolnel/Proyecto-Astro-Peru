@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.tsx';
+
+// --- DATOS PARA ESTUDIANTES Y UNIVERSIDADES (PUEDES REEMPLAZARLOS) ---
+const embajadores = [
+    { name: 'Estudiante 1', photo: '/img/placeholder-1.png', university: 'Universidad de Origen 1' },
+    { name: 'Estudiante 2', photo: '/img/placeholder-2.png', university: 'Universidad de Origen 2' },
+    { name: 'Estudiante 3', photo: '/img/placeholder-3.png', university: 'Universidad de Origen 3' },
+];
+
+const universidades = [
+    { name: 'Universidad 1', logo: '/img/logos/univ1.png' },
+    { name: 'Universidad 2', logo: '/img/logos/univ2.png' },
+    { name: 'Universidad 3', logo: '/img/logos/univ3.png' },
+];
+
+// CORRECCIÓN: Rutas apuntando a la carpeta /public
+const portalLinks = [
+    { title: 'Cultura', link: '/cultura', image: '/img/cultura/danzas.jpg' },
+    { title: 'Gastronomía', link: '/gastronomia', image: '/img/gastronomia/ceviche.jpg' },
+    { title: 'Naturaleza', link: '/Naturaleza', image: '/img/naturaleza/amazonas.jpg' },
+    { title: 'Turismo', link: '/Turismo', image: '/img/turismo/machu-picchu.jpg' },
+];
+---
+
+<Layout title="Perú: Corazón y Cultura | Inicio">
+ 
+  {/* CORRECCIÓN: Ruta de imagen corregida y se añade client:visible */}
+  <HeroSection  
+      backgroundImage="/img/turismo/machu-picchu.jpg"
+      title="Perú: Corazón y Cultura"
+      subtitle="Un viaje por la tierra de los Incas, presentado por sus embajadores en Barranquilla."
+      buttonText="Conoce Nuestra Misión"
+      buttonLink="/quienes-somos"
+      client:visible
+  />
+
+    <div class="page-container">
+      <section class="section-container text-center">
+        <h2 class="section-title" data-aos="fade-up">Nuestros Embajadores</h2>
+        <div class="embajadores-grid">
+          {embajadores.map((embajador, index) => (
+            <div class="embajador-card" data-aos="fade-up" data-aos-delay={index * 100}>
+              <img src={embajador.photo} alt={`Foto de ${embajador.name}`} class="embajador-photo" />
+              <h3>{embajador.name}</h3>
+              <p>{embajador.university}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <section class="section-container portal-section">
+        <div class="page-container">
+            <h2 class="section-title" data-aos="fade-up">Un Viaje por Perú</h2>
+            <div class="portal-grid">
+                {portalLinks.map((item, index) => (
+                <a href={item.link} class="portal-card" data-aos="zoom-in" data-aos-delay={index * 100}>
+                    {/* CORRECCIÓN: La imagen de fondo se pasa como una variable CSS para mayor seguridad */}
+                    <div class="portal-card-bg" style={`--bg-image: url(${item.image})`}></div>
+                    <div class="portal-card-overlay"></div>
+                    <h3 class="portal-card-title">{item.title}</h3>
+                </a>
+                ))}
+            </div>
+    </div>
+    </section>
+
+    <section class="section-container text-center bg-light">
+        <div class="page-container">
+            <h2 class="section-title" data-aos="fade-up">Nuestras Alma Máter</h2>
+            <p class="intro-text" data-aos="fade-up">Con orgullo, representamos a nuestras casas de estudio.</p>
+            <div class="universidades-logos-grid">
+                {universidades.map((uni, index) => (
+                <div data-aos="fade-up" data-aos-delay={index * 100}>
+                    <img src={uni.logo} alt={`Logo de ${uni.name}`} class="uni-logo-home" />
+                </div>
+                ))}
+            </div>
+            <a href="/universidades" class="btn btn-secondary" data-aos="fade-up">Conoce más sobre ellas</a>
+      </div>
+    </section>
+ 
+</Layout>
+
+<style>
+  /* Pequeño ajuste para que la imagen de fondo en las tarjetas del portal funcione bien */
+  .portal-card-bg {
+    background-image: var(--bg-image);
+  }
+</style>

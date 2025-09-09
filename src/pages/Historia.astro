@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// CORRECCIÓN: Las rutas ahora son strings simples que apuntan a la carpeta /public
+// No se necesitan imports para las imágenes.
+const historicalPeriods = [
+    {
+        era: '3000 a.C. - 1438 d.C.',
+        title: 'Época Pre-Incaica: Cuna de Civilizaciones',
+        description: 'Mucho antes de los Incas, el antiguo Perú fue el hogar de algunas de las civilizaciones más antiguas del mundo, como Caral. Culturas como Moche, Nazca, y Chimú dejaron un legado que aún hoy nos asombra.',
+        image: '/img/turismo/nazca.jpg', // Ruta corregida
+        imageAlt: 'Líneas de Nazca vistas desde el aire'
+    },
+    {
+        era: '1438 - 1532 d.C.',
+        title: 'Imperio Incaico: El Tahuantinsuyo',
+        description: 'Desde su capital en Cusco, los Incas forjaron el imperio más grande de la América precolombina, construyendo maravillas como Machu Picchu y dejando una profunda huella en la identidad andina.',
+        image: '/img/turismo/machu-picchu.jpg', // Ruta corregida
+        imageAlt: 'La ciudadela inca de Machu Picchu'
+    },
+    {
+        era: '1532 - 1821 d.C.',
+        title: 'Conquista y Virreinato: Fusión de Mundos',
+        description: 'La llegada de los españoles marcó un punto de inflexión. El encuentro de dos mundos dio lugar al Virreinato del Perú, uno de los más importantes, formando la base del Perú mestizo de hoy.',
+        image: '/img/turismo/cusco.jpg', // Ruta corregida
+        imageAlt: 'Balcones coloniales en la ciudad de Cusco'
+    },
+    {
+        era: '1821 d.C. - Presente',
+        title: 'Independencia y República: Forjando una Nación',
+        description: 'Tras proclamar su independencia en 1821, Perú inició su camino como una república soberana, siempre orgulloso de su pasado milenario y su vasta diversidad cultural.',
+        image: '/img/cultura/artesanias.jpg', // Ruta corregida
+        imageAlt: 'Artesanías que representan la cultura peruana'
+    }
+];
+---
+
+<Layout title="Historia del Perú">
+    <div class="page-container historia-page">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Una Historia Milenaria</h1>
+            <p>Un viaje visual a través del tiempo para comprender las raíces del Perú.</p>
+        </header>
+
+        <div class="timeline-container">
+            {historicalPeriods.map(period => (
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        {/* CORRECCIÓN: "className" se cambia a "class" */}
+                        <span class="timeline-era">{period.era}</span>
+                        <h2>{period.title}</h2>
+                        <p>{period.description}</p>
+                    </div>
+                    <div class="timeline-image-container">
+                         <img src={period.image} alt={period.imageAlt} class="timeline-image" loading="lazy" />
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoPlayer from '../components/VideoPlayer.tsx';
+
+// --- DATOS ACTUALIZADOS PARA LAS UNIVERSIDADES ---
+const universitiesData = [
+    {
+        name: 'Universidad Señor de Sipán (USS)',
+        logo: '/img/logos/univ1.png',
+        description: 'Fundada en 1999, la Universidad Señor de Sipán se ha consolidado como una de las instituciones de educación superior más importantes del norte del Perú. Con un enfoque en la excelencia académica y la mejora continua, la USS ofrece una amplia gama de programas en Ciencias de la Salud, Empresariales, Derecho, Humanidades e Ingeniería. Es reconocida por su compromiso con la internacionalización de sus estudiantes, promoviendo el aprendizaje de idiomas y la investigación científica para formar profesionales competitivos a nivel global.',
+        video: '/videos/universidades/univ1.mp4',
+        location: 'Chiclayo, Lambayeque, Perú'
+    },
+    {
+        name: 'Universidad César Vallejo (UCV)',
+        logo: '/img/logos/univ2.png',
+        // CORRECCIÓN: Se actualiza la descripción y la ubicación
+        description: 'Nombrada en honor al ilustre poeta peruano, la Universidad César Vallejo es una de las redes universitarias más grandes y dinámicas del país. Aunque su sede principal está en Trujillo, cuenta con importantes campus en la capital, como el de Callao en Lima. La UCV tiene la misión de formar profesionales emprendedores con sentido humanista, científico y tecnológico, reflejando su compromiso con el desarrollo y la superación en todo el Perú.',
+        video: '/videos/universidades/univ2.mp4',
+        location: 'Callao, Lima, Perú'
+    },
+    {
+        name: 'Universidad de Origen 3',
+        logo: '/img/logos/univ3.png',
+        description: 'Descripción detallada de la universidad 3. Puedes hablar de su impacto en la región, premios, exalumnos notables o el ambiente único que ofrece.',
+        video: '/videos/universidades/univ3.mp4',
+        location: 'Ciudad, Perú'
+    },
+];
+---
+<Layout title="Nuestras Universidades">
+    <div class="page-container universidades-page">
+        <header class="page-header" data-aos="fade-in">
+            <h1>Nuestras Alma Máter</h1>
+            <p>Las instituciones que nos formaron y que con orgullo representamos.</p>
+        </header>
+        <div class="universities-list">
+            {universitiesData.map((uni) => (
+                <section class="university-section">
+                    <div class="university-header" data-aos="fade-right">
+                        <img src={uni.logo} alt={`Logo de ${uni.name}`} class="university-logo-page" />
+                        <div>
+                            <h2>{uni.name}</h2>
+                            <p class="university-location">{uni.location}</p>
+                        </div>
+                    </div>
+                    <div class="university-content" data-aos="fade-up">
+                        <p class="university-description">{uni.description}</p>
+                        <VideoPlayer src={uni.video} client:visible />
+                    </div>
+                </section>
+            ))}
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,95 @@
+ya ahora que esta es la estructura quieroque me alludes con los codigos por favor ya que se esta migrando los
+
+
+
+
+
+dame todo el contenido completo por favor toda la estructura qeu ahora estara en astro
+
+
+
+/proyecto-astro-peru
+
+│
+
+├── astro.config.mjs # NUEVO: Archivo de configuración principal de Astro.
+
+├── package.json # NUEVO: Generado por Astro (muy similar al anterior).
+
+├── tsconfig.json # NUEVO: Generado por Astro (más simple).
+
+├── public/ # IGUAL: Para favicons, fuentes, etc.
+
+│ └── favicon.ico
+
+│
+
+└── src/
+
+├── assets/ # MOVIMOS ESTO: Aquí irán tus imágenes, videos y música.
+
+│ ├── img/
+
+│ ├── videos/
+
+│ └── music/
+
+│
+
+├── components/ # ✅ CASI IGUAL: Mantenemos todos tus componentes de React (.tsx).
+
+│ ├── Navbar.tsx
+
+│ ├── Footer.tsx
+
+│ ├── HeroSection.tsx
+
+│ ├── Gallery.tsx
+
+│ ├── VideoPlayer.tsx
+
+│ └── MusicPlayer.tsx
+
+│
+
+├── layouts/ # ⭐ NUEVO Y MUY IMPORTANTE: Plantillas para tus páginas.
+
+│ └── Layout.astro # Reemplaza a index.html y App.tsx.
+
+│
+
+├── pages/ # ➡️ LA GRAN DIFERENCIA: Aquí viven tus páginas.
+
+│ ├── index.astro # ERA Home.tsx
+
+│ ├── quienes-somos.astro
+
+│ ├── universidades.astro
+
+│ ├── contacto.astro
+
+│ ├── cultura.astro
+
+│ ├── historia.astro
+
+│ ├── gastronomia.astro
+
+│ ├── naturaleza.astro
+
+│ ├── turismo.astro
+
+│ ├── cajamarca.astro
+
+│ └── musica.astro
+
+│
+
+└── styles/ # ✅ IGUAL: Mantenemos todos tus archivos de estilos SCSS.
+
+├── _variables.scss
+
+├── _mixins.scss
+
+│ ... (etc.)
+
+└── _responsive.scss
