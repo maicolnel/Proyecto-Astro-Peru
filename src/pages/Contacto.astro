@@ -3,51 +3,49 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Contacto">
-    <div class="page-container contacto-page">
-        <header class="page-header" data-aos="fade-in">
-            <h1>Hablemos</h1>
-            <p>¿Tienes alguna pregunta, sugerencia o simplemente quieres saludar? ¡Nos encantaría saber de ti!</p>
-        </header>
+  <div class="page-container contacto-page">
+    <header class="page-header" data-aos="fade-in">
+      <h1>Hablemos</h1>
+      <p>¿Tienes alguna pregunta, sugerencia o simplemente quieres saludar? ¡Nos encantaría saber de ti!</p>
+    </header>
 
-        <div class="contact-content-wrapper">
-            <div class="contact-info" data-aos="fade-right">
-                <h3>Nuestra Misión</h3>
-                <p>Compartir la riqueza de la cultura peruana y crear lazos de amistad aquí en Barranquilla.</p>
-                <h3>Ubicación del Intercambio</h3>
-                <p>Universidad Americana<br/>Barranquilla, Atlántico, Colombia</p>
-            </div>
+    <div class="contact-content-wrapper">
+      <div class="contact-info" data-aos="fade-right">
+        <h3>Nuestra Misión</h3>
+        <p>Compartir la riqueza de la cultura peruana y crear lazos de amistad aquí en Barranquilla.</p>
+        <h3>Ubicación del Intercambio</h3>
+        <p>Universidad Americana<br/>Barranquilla, Atlántico, Colombia</p>
+      </div>
 
-            <div class="contact-form-container" data-aos="fade-left">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Tu Nombre</label>
-                        <input type="text" id="name" name="name" required placeholder="Ej: Juan Valdés" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Tu Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="Ej: juan.valdes@email.com" />
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Tu Mensaje</label>
-                        <textarea id="message" name="message" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
-                    </div>
-                     <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
-            </div>
-        </div>
+      <div class="contact-form-container" data-aos="fade-left">
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Tu Nombre</label>
+            <input type="text" id="name" name="name" required placeholder="Ej: Juan Valdés" />
+          </div>
+          <div class="form-group">
+            <label for="email">Tu Correo Electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="Ej: juan.valdes@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Tu Mensaje</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+        </form>
+      </div>
     </div>
+  </div>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('.contact-form');
+      if (form instanceof HTMLFormElement) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+          form.reset();
+        });
+      }
+    });
+  </script>
 </Layout>
-
-<script>
-    // Se busca el formulario en la página
-const form = document.querySelector('.contact-form');
-
-if (form instanceof HTMLFormElement) {
-  // Se añade el evento para manejar el envío
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Previene que la página se recargue
-    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-    form.reset(); // Limpia el formulario
-  });
-}
-</script>

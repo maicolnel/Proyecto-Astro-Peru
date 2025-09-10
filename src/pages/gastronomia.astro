@@ -1,20 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Gallery from '../components/Gallery.tsx';
+
+// Prefijo base para imágenes en GitHub Pages
+const base = '/Proyecto-Astro-Peru/';
+
 const images = [
-  { src: '/img/gastronomia/ceviche.jpg', thumb: '/img/gastronomia/ceviche.jpg', alt: 'Ceviche', title: 'Ceviche' },
-  { src: '/img/gastronomia/lomo-saltado.jpg', thumb: '/img/gastronomia/lomo-saltado.jpg', alt: 'Lomo Saltado', title: 'Lomo Saltado' },
-  { src: '/img/gastronomia/aji-de-gallina.jpg', thumb: '/img/gastronomia/aji-de-gallina.jpg', alt: 'Ají de Gallina', title: 'Ají de Gallina' },
+  { src: `${base}img/gastronomia/ceviche.jpg`, thumb: `${base}img/gastronomia/ceviche.jpg`, alt: 'Ceviche', title: 'Ceviche' },
+  { src: `${base}img/gastronomia/lomo-saltado.jpg`, thumb: `${base}img/gastronomia/lomo-saltado.jpg`, alt: 'Lomo Saltado', title: 'Lomo Saltado' },
+  { src: `${base}img/gastronomia/aji-de-gallina.jpg`, thumb: `${base}img/gastronomia/aji-de-gallina.jpg`, alt: 'Ají de Gallina', title: 'Ají de Gallina' },
 ];
 ---
+
 <Layout title="Gastronomía Peruana">
-    <div class="page-container">
-        <header class="page-header" data-aos="fade-in">
-            <h1>Sabor a Perú</h1>
-            <p>Una de las cocinas más celebradas del mundo.</p>
-        </header>
-        <section class="section-container">
-            <Gallery images={images} client:visible />
-        </section>
-    </div>
+  <div class="page-container">
+    <header class="page-header" data-aos="fade-in">
+      <h1>Sabor a Perú</h1>
+      <p>Una de las cocinas más celebradas del mundo.</p>
+    </header>
+    <section class="section-container">
+      <Gallery images={images} client:visible />
+    </section>
+  </div>
 </Layout>

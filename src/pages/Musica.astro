@@ -1,44 +1,40 @@
 ---
-// src/pages/musica.astro
-
 import Layout from '../layouts/Layout.astro';
 import Gallery from '../components/Gallery.tsx';
-// Importamos el NUEVO componente que creamos
 import MusicList from '../components/MusicList.tsx';
 
-// --- TUS DATOS DE LA PÁGINA ---
+const base = '/Proyecto-Astro-Peru/';
+
 const instruments = [
-    { src: '/img/musica/cajon.jpg', thumb: '/img/musica/cajon.jpg', alt: 'Cajón Peruano', title: 'El Cajón: Ritmo Afroperuano' },
-    { src: '/img/musica/quena.jpg', thumb: '/img/musica/quena.jpg', alt: 'Quena Andina', title: 'La Quena: Viento de los Andes' },
-    { src: '/img/musica/charango.jpg', thumb: '/img/musica/charango.jpg', alt: 'Charango', title: 'El Charango: Corazón de Cuerdas' },
-    { src: '/img/musica/zampoña.jpg', thumb: '/img/musica/zampoña.jpg', alt: 'Zampona', title: 'La Zampona: Ritmo de la Sierra' },
-    { src: '/img/musica/arpa-andina.jpg', thumb: '/img/musica/arpa-andina.jpg', alt: 'Arpa Andina', title: 'El Arpa Andina: Dulzura y Tradición' },
-    { src: '/img/musica/guitarra-criolla.jpg', thumb: '/img/musica/guitarra-criolla.jpg', alt: 'Guitarra', title: 'La Guitarra: Voz de los Andes' },
+  { src: `${base}img/musica/cajon.jpg`, thumb: `${base}img/musica/cajon.jpg`, alt: 'Cajón Peruano', title: 'El Cajón: Ritmo Afroperuano' },
+  { src: `${base}img/musica/quena.jpg`, thumb: `${base}img/musica/quena.jpg`, alt: 'Quena Andina', title: 'La Quena: Viento de los Andes' },
+  { src: `${base}img/musica/charango.jpg`, thumb: `${base}img/musica/charango.jpg`, alt: 'Charango', title: 'El Charango: Corazón de Cuerdas' },
+  { src: `${base}img/musica/zampoña.jpg`, thumb: `${base}img/musica/zampoña.jpg`, alt: 'Zampona', title: 'La Zampona: Ritmo de la Sierra' },
+  { src: `${base}img/musica/arpa-andina.jpg`, thumb: `${base}img/musica/arpa-andina.jpg`, alt: 'Arpa Andina', title: 'El Arpa Andina: Dulzura y Tradición' },
+  { src: `${base}img/musica/guitarra-criolla.jpg`, thumb: `${base}img/musica/guitarra-criolla.jpg`, alt: 'Guitarra', title: 'La Guitarra: Voz de los Andes' },
 ];
 
 const tracks = [
-    // Se añade un 'id' único a cada canción
-    { id: 'marinera', src: '/music/marinera.mp3', title: 'Marinera Norteña', description: 'Baile nacional del Perú, elegante y coqueto.' },
-    { id: 'huaino', src: '/music/huaino.mp3', title: 'Huayno', description: 'El género más popular de la sierra.' },
-    { id: 'festejo', src: '/music/festejo.mp3', title: 'Festejo', description: 'Ritmo afroperuano vibrante y festivo.' },
-    { id: 'cajon', src: '/music/cajon.mp3', title: 'Cajón Peruano', description: 'El instrumento que marca el ritmo del Perú.' },
-    { id: 'vals', src: '/music/vals-criollo.mp3', title: 'Vals Peruano', description: 'Una mezcla de vals europeo con sabor criollo.' },
+  { id: 'marinera', src: `${base}music/marinera.mp3`, title: 'Marinera Norteña', description: 'Baile nacional del Perú, elegante y coqueto.' },
+  { id: 'huaino', src: `${base}music/huaino.mp3`, title: 'Huayno', description: 'El género más popular de la sierra.' },
+  { id: 'festejo', src: `${base}music/festejo.mp3`, title: 'Festejo', description: 'Ritmo afroperuano vibrante y festivo.' },
+  { id: 'cajon', src: `${base}music/cajon.mp3`, title: 'Cajón Peruano', description: 'El instrumento que marca el ritmo del Perú.' },
+  { id: 'vals', src: `${base}music/vals-criollo.mp3`, title: 'Vals Peruano', description: 'Una mezcla de vals europeo con sabor criollo.' },
 ];
 ---
 
 <Layout title="Música del Perú">
-    <div class="page-container musica-page">
-        <header class="page-header" data-aos="fade-in">
-            <h1>Los Sonidos del Perú</h1>
-            <p>La banda sonora de un país diverso, desde los Andes hasta la costa.</p>
-        </header>
+  <div class="page-container musica-page">
+    <header class="page-header" data-aos="fade-in">
+      <h1>Los Sonidos del Perú</h1>
+      <p>La banda sonora de un país diverso, desde los Andes hasta la costa.</p>
+    </header>
 
-        <section class="section-container">
-            <h2 class="section-title" data-aos="fade-up">Instrumentos con Alma</h2>
-            <Gallery images={instruments} client:visible />
-        </section>
+    <section class="section-container">
+      <h2 class="section-title" data-aos="fade-up">Instrumentos con Alma</h2>
+      <Gallery images={instruments} client:visible />
+    </section>
 
-        <MusicList tracks={tracks} client:visible />
-
-    </div>
+    <MusicList tracks={tracks} client:visible />
+  </div>
 </Layout>
