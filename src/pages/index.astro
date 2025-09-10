@@ -2,10 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.tsx';
 
-// Base path para GitHub Pages
 const base = '/Proyecto-Astro-Peru/';
 
-// --- DATOS PARA ESTUDIANTES Y UNIVERSIDADES ---
 const embajadores = [
   { name: 'Estudiante 1', photo: `${base}img/placeholder-1.png`, university: 'Universidad de Origen 1' },
   { name: 'Estudiante 2', photo: `${base}img/placeholder-2.png`, university: 'Universidad de Origen 2' },
@@ -18,12 +16,12 @@ const universidades = [
   { name: 'Universidad 3', logo: `${base}img/logos/univ3.png` },
 ];
 
-// CORRECCIÓN: Rutas apuntando a la carpeta /public con base
+// Cambiamos las rutas de los links en portalLinks para no incluir barra delante
 const portalLinks = [
-  { title: 'Cultura', link: '/cultura', image: `${base}img/cultura/danzas.jpg` },
-  { title: 'Gastronomía', link: '/gastronomia', image: `${base}img/gastronomia/ceviche.jpg` },
-  { title: 'Naturaleza', link: '/Naturaleza', image: `${base}img/naturaleza/amazonas.jpg` },
-  { title: 'Turismo', link: '/Turismo', image: `${base}img/turismo/machu-picchu.jpg` },
+  { title: 'Cultura', link: 'cultura', image: `${base}img/cultura/danzas.jpg` },
+  { title: 'Gastronomía', link: 'gastronomia', image: `${base}img/gastronomia/ceviche.jpg` },
+  { title: 'Naturaleza', link: 'Naturaleza', image: `${base}img/naturaleza/amazonas.jpg` },
+  { title: 'Turismo', link: 'Turismo', image: `${base}img/turismo/machu-picchu.jpg` },
 ];
 ---
 
@@ -34,7 +32,7 @@ const portalLinks = [
     title="Perú: Corazón y Cultura"
     subtitle="Un viaje por la tierra de los Incas, presentado por sus embajadores en Barranquilla."
     buttonText="Conoce Nuestra Misión"
-    buttonLink="/quienes-somos"
+    buttonLink={`${base}quienes-somos`}
     client:visible
   />
 
@@ -58,7 +56,7 @@ const portalLinks = [
       <h2 class="section-title" data-aos="fade-up">Un Viaje por Perú</h2>
       <div class="portal-grid">
         {portalLinks.map((item, index) => (
-          <a href={item.link} class="portal-card" data-aos="zoom-in" data-aos-delay={index * 100}>
+          <a href={`${base}${item.link}`} class="portal-card" data-aos="zoom-in" data-aos-delay={index * 100}>
             {/* La imagen de fondo se pasa como variable CSS */}
             <div class="portal-card-bg" style={`--bg-image: url(${item.image})`}></div>
             <div class="portal-card-overlay"></div>
@@ -80,7 +78,7 @@ const portalLinks = [
           </div>
         ))}
       </div>
-      <a href="/universidades" class="btn btn-secondary" data-aos="fade-up">Conoce más sobre ellas</a>
+      <a href={`${base}universidades`} class="btn btn-secondary" data-aos="fade-up">Conoce más sobre ellas</a>
     </div>
   </section>
 

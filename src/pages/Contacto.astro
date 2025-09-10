@@ -1,51 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.tsx';
+
+const base = '/Proyecto-Astro-Peru/';
+
+const embajadores = [
+  { name: 'Estudiante 1', photo: `${base}img/placeholder-1.png`, university: 'Universidad de Origen 1' },
+  { name: 'Estudiante 2', photo: `${base}img/placeholder-2.png`, university: 'Universidad de Origen 2' },
+  { name: 'Estudiante 3', photo: `${base}img/placeholder-3.png`, university: 'Universidad de Origen 3' },
+];
+
+const universidades = [
+  { name: 'Universidad 1', logo: `${base}img/logos/univ1.png` },
+  { name: 'Universidad 2', logo: `${base}img/logos/univ2.png` },
+  { name: 'Universidad 3', logo: `${base}img/logos/univ3.png` },
+];
+
+const portalLinks = [
+  { title: 'Cultura', link: 'cultura', image: `${base}img/cultura/danzas.jpg` },
+  { title: 'Gastronomía', link: 'gastronomia', image: `${base}img/gastronomia/ceviche.jpg` },
+  { title: 'Naturaleza', link: 'Naturaleza', image: `${base}img/naturaleza/amazonas.jpg` },
+  { title: 'Turismo', link: 'Turismo', image: `${base}img/turismo/machu-picchu.jpg` },
+];
 ---
 
-<Layout title="Contacto">
-  <div class="page-container contacto-page">
-    <header class="page-header" data-aos="fade-in">
-      <h1>Hablemos</h1>
-      <p>¿Tienes alguna pregunta, sugerencia o simplemente quieres saludar? ¡Nos encantaría saber de ti!</p>
-    </header>
+<Layout title="Perú: Corazón y Cultura | Inicio">
 
-    <div class="contact-content-wrapper">
-      <div class="contact-info" data-aos="fade-right">
-        <h3>Nuestra Misión</h3>
-        <p>Compartir la riqueza de la cultura peruana y crear lazos de amistad aquí en Barranquilla.</p>
-        <h3>Ubicación del Intercambio</h3>
-        <p>Universidad Americana<br/>Barranquilla, Atlántico, Colombia</p>
+  <HeroSection
+    backgroundImage={`${base}img/turismo/machu-picchu.jpg`}
+    title="Perú: Corazón y Cultura"
+    subtitle="Un viaje por la tierra de los Incas, presentado por sus embajadores en Barranquilla."
+    buttonText="Conoce Nuestra Misión"
+    buttonLink={`${base}quienes-somos`}
+    client:visible
+  />
+
+  <div class="page-container">
+    <section class="section-container text-center">
+      <h2 class="section-title" data-aos="fade-up">Nuestros Embajadores</h2>
+      <div class="embajadores-grid">
+        {embajadores.map((embajador, index) => (
+          <div class="embajador-card" data-aos="fade-up" data-aos-delay={index * 100}>
+            <img src={embajador.photo} alt={`Foto de ${embajador.name}`} class="embajador-photo" />
+            <h3>{embajador.name}</h3>
+            <p>{embajador.university}</p>
+          </div>
+        ))}
       </div>
+    </section>
+  </div>
 
-      <div class="contact-form-container" data-aos="fade-left">
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="name">Tu Nombre</label>
-            <input type="text" id="name" name="name" required placeholder="Ej: Juan Valdés" />
-          </div>
-          <div class="form-group">
-            <label for="email">Tu Correo Electrónico</label>
-            <input type="email" id="email" name="email" required placeholder="Ej: juan.valdes@email.com" />
-          </div>
-          <div class="form-group">
-            <label for="message">Tu Mensaje</label>
-            <textarea id="message" name="message" rows="6" required placeholder="Escribe tu mensaje aquí..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-        </form>
+  <section class="section-container portal-section">
+    <div class="page-container">
+      <h2 class="section-title" data-aos="fade-up">Un Viaje por Perú</h2>
+      <div class="portal-grid">
+        {portalLinks.map((item, index) => (
+          <a href={`${base}${item.link}`} class="portal-card" data-aos="zoom-in" data-aos-delay={index * 100}>
+            <div class="portal-card-bg" style={`--bg-image: url(${item.image})`}></div>
+            <div class="portal-card-overlay"></div>
+            <h3 class="portal-card-title">{item.title}</h3>
+          </a>
+        ))}
       </div>
     </div>
-  </div>
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.querySelector('.contact-form');
-      if (form instanceof HTMLFormElement) {
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
-          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
-          form.reset();
-        });
-      }
-    });
-  </script>
+  </section>
+
+  <section class="section-container text-center bg-light">
+    <div class="page-container">
+      <h2 class="section-title" data-aos="fade-up">Nuestras Alma Máter</h2>
+      <p class="intro-text" data-aos="fade-up">Con orgullo, representamos a nuestras casas de estudio.</p>
+      <div class="universidades-logos-grid">
+        {universidades.map((uni, index) => (
+          <div data-aos="fade-up" data-aos-delay={index * 100}>
+            <img src={uni.logo} alt={`Logo de ${uni.name}`} class="uni-logo-home" />
+          </div>
+        ))}
+      </div>
+      <a href={`${base}universidades`} class="btn btn-secondary" data-aos="fade-up">Conoce más sobre ellas</a>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  .portal-card-bg {
+    background-image: var(--bg-image);
+  }
+</style>
