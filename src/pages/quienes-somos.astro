@@ -5,25 +5,27 @@ const base = '/Proyecto-Astro-Peru/';
 
 const teamMembers = [
   {
-    name: 'Nombre Estudiante 1',
-    major: 'Carrera del Estudiante 1',
-    university: 'Universidad de Origen 1',
+    name: 'Maicol Nelson Rafael Rojas',
+    major: 'Ingeniería de Sistemas',
+    university: 'Universidad Señor de Sipán (USS)',
     photo: `${base}img/placeholder-1.png`,
-    bio: 'Escribe aquí una breve biografía sobre ti, tus pasiones e intereses en este intercambio cultural.'
+    bio: 'Apasionado por la tecnología y la exploración cultural, disfruto resolviendo retos con creatividad y aprendiendo de cada experiencia de viaje.',
+    quote: 'Al igual que un algoritmo, la vida tiene muchas formas de resolverse; solo tienes que encontrar el camino más eficiente. 🤓💻'
   },
   {
-    name: 'Nombre Estudiante 2',
-    major: 'Carrera del Estudiante 2',
-    university: 'Universidad de Origen 2',
+    name: 'Micaela',
+    major: 'Comunicación',
+    university: 'Universidad César Vallejo (UCV)',
     photo: `${base}img/placeholder-2.png`,
-    bio: 'Escribe aquí una breve biografía sobre ti, tus pasiones e intereses en este intercambio cultural.'
+    bio: 'Amante de la danza y el senderismo, creo en la fuerza de la curiosidad para conectar culturas y fortalecer nuestra visión del mundo.',
+    quote: 'Atrévete a salir de tu zona de confort: las mejores historias ocurren cuando te animas a vivir lo desconocido.'
   },
   {
     name: 'Nombre Estudiante 3',
     major: 'Carrera del Estudiante 3',
     university: 'Universidad de Origen 3',
     photo: `${base}img/placeholder-3.png`,
-    bio: 'Escribe aquí una breve biografía sobre ti, tus pasiones e intereses en este intercambio cultural.'
+    bio: 'Explora tus pasiones y comparte tu visión: este intercambio cultural es la oportunidad perfecta para descubrir nuevas pasiones.'
   },
 ];
 ---
@@ -45,7 +47,8 @@ const teamMembers = [
             <h2>{member.name}</h2>
             <h3>{member.major}</h3>
             <h4>{member.university}</h4>
-            <p class="member-bio">"{member.bio}"</p>
+            <p class="member-bio">{member.bio}</p>
+            {member.quote && <blockquote class="member-quote">“{member.quote}”</blockquote>}
           </div>
         </div>
       ))}

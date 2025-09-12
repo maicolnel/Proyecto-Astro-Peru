@@ -1,5 +1,3 @@
-// src/components/MusicPlayer.tsx
-
 import { useRef, useEffect } from 'react';
 
 interface MusicPlayerProps {
@@ -13,12 +11,11 @@ const MusicPlayer = ({ src, title, isPlaying, onPlay }: MusicPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.play().catch(e => console.error("Error al reproducir:", e));
-      } else {
-        audioRef.current.pause();
-      }
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.play().catch(e => console.error("Error al reproducir:", e));
+    } else {
+      audioRef.current.pause();
     }
   }, [isPlaying, src]);
 
