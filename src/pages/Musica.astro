@@ -9,7 +9,7 @@ const instruments = [
   { src: `${base}img/musica/cajon.jpg`, thumb: `${base}img/musica/cajon.jpg`, alt: 'Cajón Peruano', title: 'El Cajón: Ritmo Afroperuano' },
   { src: `${base}img/musica/quena.jpg`, thumb: `${base}img/musica/quena.jpg`, alt: 'Quena Andina', title: 'La Quena: Viento de los Andes' },
   { src: `${base}img/musica/charango.jpg`, thumb: `${base}img/musica/charango.jpg`, alt: 'Charango', title: 'El Charango: Corazón de Cuerdas' },
-  { src: `${base}img/musica/zampoña.jpg`, thumb: `${base}img/musica/zampoña.jpg`, alt: 'Zampona', title: 'La Zampona: Ritmo de la Sierra' },
+  { src: `${base}img/musica/zampoña.jpg`, thumb: `${base}img/musica/zampoña.jpg`, alt: 'Zampoña', title: 'La Zampona: Ritmo de la Sierra' },
   { src: `${base}img/musica/arpa-andina.jpg`, thumb: `${base}img/musica/arpa-andina.jpg`, alt: 'Arpa Andina', title: 'El Arpa Andina: Dulzura y Tradición' },
   { src: `${base}img/musica/guitarra-criolla.jpg`, thumb: `${base}img/musica/guitarra-criolla.jpg`, alt: 'Guitarra', title: 'La Guitarra: Voz de los Andes' },
 ];
@@ -19,52 +19,43 @@ const tracks = [
   { id: 'shipbo-enamorado', src: `${base}music/Shipbo Enamorado.mp3`, title: 'Shipbo Enamorado', description: 'Música amazónica del Perú.' },
   { id: 'el-bonbon-asesino', src: `${base}music/El Bonbon Asesino.mp3`, title: 'El Bonbón Asesino', description: 'Éxito de la música chicha peruana.' },
   { id: 'triste-payaso', src: `${base}music/Triste Payaso.mp3`, title: 'Triste Payaso', description: 'Balada criolla peruana.' },
-  
   { id: 'una-aventura-mas', src: `${base}music/Una aventura mas.mp3`, title: 'Una Aventura Más', description: 'Canción romántica peruana.' },
   { id: 'esta-noche', src: `${base}music/Esta Noche - Orquesta Candela.mp3`, title: 'Esta Noche - Orquesta Candela', description: 'Salsa peruana moderna.' },
   { id: 'solo', src: `${base}music/Solo.mp3`, title: 'Solo', description: 'Balada peruana contemporánea.' },
   { id: 'juramentos', src: `${base}music/Juramentos.mp3`, title: 'Juramentos', description: 'Clásico de la música criolla.' },
-  
   { id: 'jipi-jay', src: `${base}music/Jipi Jay.mp3`, title: 'Jipi Jay', description: 'Música festiva peruana.' },
   { id: 'que-paso', src: `${base}music/Que Pasó - Papillón.mp3`, title: 'Qué Pasó - Papillón', description: 'Cumbia peruana moderna.' },
   { id: 'el-embrujo', src: `${base}music/El Embrujo.mp3`, title: 'El Embrujo', description: 'Música afroperuana tradicional.' },
   { id: 'siqui-siqui', src: `${base}music/Siqui Siqui.mp3`, title: 'Siqui Siqui', description: 'Canción infantil peruana popular.' },
-  
   { id: 'damaris-tusuy', src: `${base}music/Damaris - TusuyKusun.mp3`, title: 'Damaris - Tusuy Kusun', description: 'Música andina en quechua.' },
   { id: 'tupay-caporal', src: `${base}music/Tupay - Soy Caporal.mp3`, title: 'Tupay - Soy Caporal', description: 'Música de danza andina.' },
   { id: 'mal-paso', src: `${base}music/Mal Paso.mp3`, title: 'Mal Paso', description: 'Canción criolla peruana.' },
   { id: 'que-linda-flor', src: `${base}music/Que linda flor.mp3`, title: 'Qué Linda Flor', description: 'Vals peruano romántico.' },
-  
   { id: 'esta-es-mi-tierra', src: `${base}music/Esta es mi tierra.mp3`, title: 'Esta es Mi Tierra', description: 'Canción patriótica peruana.' },
   { id: 'agua-marina', src: `${base}music/AGUA MARINA.mp3`, title: 'Agua Marina', description: 'Cumbia norteña peruana.' },
   { id: 'el-condor-pasa', src: `${base}music/El Condor Pasa.mp3`, title: 'El Cóndor Pasa', description: 'Himno musical del Perú, conocido mundialmente.' },
   { id: 'ni-siquiera', src: `${base}music/Ni siquiera.mp3`, title: 'Ni Siquiera', description: 'Balada peruana moderna.' },
-  
   { id: 'me-vas-extrañar', src: `${base}music/ME VAS A EXTRAÑAR.mp3`, title: 'Me Vas a Extrañar', description: 'Canción romántica peruana.' },
   { id: 'you-salsa', src: `${base}music/You Salsa.mp3`, title: 'You Salsa', description: 'Salsa peruana contemporánea.' },
   { id: 'probablemente', src: `${base}music/Probablemente.mp3`, title: 'Probablemente', description: 'Balada pop peruana.' },
   { id: 'con-la-misma-moneda', src: `${base}music/Con La Misma Moneda.mp3`, title: 'Con La Misma Moneda', description: 'Canción de desamor peruana.' },
-  
   { id: 'quiereme', src: `${base}music/Quiereme.mp3`, title: 'Quiéreme', description: 'Canción romántica criolla.' },
   { id: 'la-revancha', src: `${base}music/La Revancha.mp3`, title: 'La Revancha', description: 'Música popular peruana.' },
   { id: 'raices-festejo', src: `${base}music/Raíces del Festejo.mp3`, title: 'Raíces del Festejo', description: 'Festejo afroperuano tradicional.' },
   { id: 'jamas-impediran', src: `${base}music/Jamás Impedirán.mp3`, title: 'Jamás Impedirán', description: 'Canción de protesta social peruana.' },
-  
   { id: 'los-kipus', src: `${base}music/Los Kipus.mp3`, title: 'Los Kipus', description: 'Música andina tradicional.' },
   { id: 'regresa', src: `${base}music/Regresa.mp3`, title: 'Regresa', description: 'Balada romántica peruana.' },
   { id: 'motor-y-motivo', src: `${base}music/Motor y Motivo.mp3`, title: 'Motor y Motivo', description: 'Música criolla contemporánea.' },
   { id: 'contigo-peru', src: `${base}music/Contigo Peru.mp3`, title: 'Contigo Perú', description: 'Canción patriótica emblemática.' },
-  
   { id: 'negrito-chichivi', src: `${base}music/Negrito Chichivi.mp3`, title: 'Negrito Chichivi', description: 'Festejo afroperuano clásico.' },
   { id: 'ritmo-color-sabor', src: `${base}music/Ritmo, Color y Sabor.mp3`, title: 'Ritmo, Color y Sabor', description: 'Música tropical peruana.' },
   { id: 'el-alcatraz', src: `${base}music/El Alcatraz.mp3`, title: 'El Alcatraz', description: 'Danza afroperuana tradicional.' },
   { id: 'el-chacombo', src: `${base}music/El Chacombo.mp3`, title: 'El Chacombo', description: 'Ritmo afroperuano festivo.' },
-  
   { id: 'cholo-soy', src: `${base}music/Cholo Soy.mp3`, title: 'Cholo Soy', description: 'Canción de identidad andina.' }
 ];
 ---
 
-<Layout title="Música del Perú">
+<Layout title="Música del Perú" hideFooter>
   <div class="page-container musica-page">
     <header class="page-header" data-aos="fade-in">
       <h1>Los Sonidos del Perú</h1>

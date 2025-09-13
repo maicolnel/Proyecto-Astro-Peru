@@ -1,4 +1,5 @@
 ---
+// src/layouts/Layout.astro
 import Navbar from '../components/Navbar.tsx';
 import Footer from '../components/Footer.tsx';
 import '../styles/index.scss';
@@ -8,10 +9,12 @@ const base = import.meta.env.BASE_URL || '/Proyecto-Astro-Peru/';
 interface Props {
   title: string;
   description?: string;
+  hideFooter?: boolean;
 }
 const {
   title,
-  description = "Un viaje por la cultura, sabores y paisajes de Perú, presentado por estudiantes de intercambio en Barranquilla."
+  description = "Un viaje por la cultura, sabores y paisajes de Perú, presentado por estudiantes de intercambio en Barranquilla.",
+  hideFooter = false
 } = Astro.props;
 ---
 
@@ -22,19 +25,15 @@ const {
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
-
-    <!-- Favicon SVG correctamente referenciado con base dinámica -->
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="shortcut icon" href={`${base}favicon.svg`} />
     <link rel="apple-touch-icon" href={`${base}favicon.svg`} />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Lora:wght@700&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href={`${base}libs/lightgallery/lightgallery.min.css`} />
   </head>
   <body>
@@ -42,8 +41,7 @@ const {
     <main>
       <slot />
     </main>
-    <Footer client:load />
-
+    { !hideFooter && <Footer client:load /> }
     <script id="lightgallery-script" src={`${base}libs/lightgallery/lightgallery.min.js`}></script>
     <script>
       import AOS from 'aos';

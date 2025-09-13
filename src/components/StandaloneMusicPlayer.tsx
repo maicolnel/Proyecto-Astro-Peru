@@ -1,3 +1,4 @@
+// src/components/StandaloneMusicPlayer.tsx
 import { useRef, useEffect } from 'react';
 
 interface StandaloneMusicPlayerProps {
@@ -10,41 +11,41 @@ interface StandaloneMusicPlayerProps {
 
 const StandaloneMusicPlayer = ({ src, title, onNext, onPrev, onEnded }: StandaloneMusicPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const isInitialMount = useRef(true);
+  const firstMount = useRef(true);
 
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
+    const pauseHandler = () => audioRef.current?.pause();
+    window.addEventListener('pause-all', pauseHandler);
+    return () => window.removeEventListener('pause-all', pauseHandler);
+  }, []);
+
+  useEffect(() => {
+    if (firstMount.current) {
+      firstMount.current = false;
       return;
     }
-    audioRef.current?.play().catch(e => console.warn("La reproducción automática falló.", e));
+    window.dispatchEvent(new Event('pause-all'));
+    audioRef.current?.play().catch(() => {});
   }, [src]);
 
+  const handleEnded = () => {
+    window.dispatchEvent(new Event('pause-all'));
+    onEnded();
+  };
+
   return (
-    <div className="footer-player">
-      <span className="music-player-title">{title}</span>
-      <div className="player-controls-container">
-        <button onClick={onPrev} className="player-button" aria-label="Canción anterior">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-          </svg>
+    <div className="footer-music">
+      <h4>Música para el Alma</h4>
+      <div className="footer-player">
+        <button onClick={() => { window.dispatchEvent(new Event('pause-all')); onPrev(); }} className="ctrl-prev" aria-label="Anterior">
+          &#9664;
         </button>
-        <audio
-          ref={audioRef}
-          src={src}
-          controls
-          onEnded={onEnded}
-        >
-          Tu navegador no soporta el elemento de audio.
-        </audio>
-        <button onClick={onNext} className="player-button" aria-label="Siguiente canción">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-          </svg>
+        <audio ref={audioRef} src={src} controls onEnded={handleEnded} />
+        <button onClick={() => { window.dispatchEvent(new Event('pause-all')); onNext(); }} className="ctrl-next" aria-label="Siguiente">
+          &#9654;
         </button>
       </div>
+      <div className="track-title">{title}</div>
     </div>
   );
 };

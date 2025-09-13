@@ -1,21 +1,29 @@
 import { useRef, useEffect } from 'react';
 
 interface MusicPlayerProps {
+  id: string;
   src: string;
   title: string;
   isPlaying: boolean;
-  onPlay: () => void;
+  onPlay: (id: string) => void;
+  onEnded: (id: string) => void;
 }
 
-const MusicPlayer = ({ src, title, isPlaying, onPlay }: MusicPlayerProps) => {
+const MusicPlayer = ({ id, src, title, isPlaying, onPlay, onEnded }: MusicPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (!audioRef.current) return;
+    const pauseHandler = () => audioRef.current?.pause();
+    window.addEventListener('pause-all', pauseHandler);
+    return () => window.removeEventListener('pause-all', pauseHandler);
+  }, []);
+
+  useEffect(() => {
     if (isPlaying) {
-      audioRef.current.play().catch(e => console.error("Error al reproducir:", e));
+      window.dispatchEvent(new Event('pause-all'));
+      audioRef.current?.play().catch(() => {});
     } else {
-      audioRef.current.pause();
+      audioRef.current?.pause();
     }
   }, [isPlaying, src]);
 
@@ -26,10 +34,9 @@ const MusicPlayer = ({ src, title, isPlaying, onPlay }: MusicPlayerProps) => {
         ref={audioRef}
         src={src}
         controls
-        onPlay={onPlay}
-      >
-        Tu navegador no soporta el elemento de audio.
-      </audio>
+        onPlay={() => onPlay(id)}
+        onEnded={() => onEnded(id)}
+      />
     </div>
   );
 };

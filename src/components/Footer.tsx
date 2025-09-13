@@ -3,7 +3,7 @@ import StandaloneMusicPlayer from './StandaloneMusicPlayer';
 
 const base = '/Proyecto-Astro-Peru/';
 
-const Footer = () => {
+export default function Footer() {
   const musicTracks = [
     { src: `${base}music/La anaconda.mp3`, title: "La Anaconda" },
     { src: `${base}music/Shipbo Enamorado.mp3`, title: "Shipbo Enamorado" },
@@ -44,17 +44,20 @@ const Footer = () => {
     { src: `${base}music/Cholo Soy.mp3`, title: "Cholo Soy" },
   ];
 
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const handleNextTrack = () => {
-    setCurrentTrackIndex(i => (i + 1) % musicTracks.length);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    window.dispatchEvent(new Event('pause-all'));
+    setCurrentIndex(i => (i + 1) % musicTracks.length);
   };
-  const handlePrevTrack = () => {
-    setCurrentTrackIndex(i => (i - 1 + musicTracks.length) % musicTracks.length);
+
+  const handlePrev = () => {
+    window.dispatchEvent(new Event('pause-all'));
+    setCurrentIndex(i => (i - 1 + musicTracks.length) % musicTracks.length);
   };
-  const currentTrack = musicTracks[currentTrackIndex];
 
   return (
-    <footer className="footer" client:load>
+    <footer className="footer">
       <div className="footer-container">
         <div className="footer-info">
           <h3>Proyecto de Intercambio Cultural</h3>
@@ -62,18 +65,15 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} - Todos los derechos reservados.</p>
         </div>
         <div className="footer-music">
-          <h4>Música para el Alma</h4>
           <StandaloneMusicPlayer
-            src={currentTrack.src}
-            title={currentTrack.title}
-            onNext={handleNextTrack}
-            onPrev={handlePrevTrack}
-            onEnded={handleNextTrack}
+            src={musicTracks[currentIndex].src}
+            title={musicTracks[currentIndex].title}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            onEnded={handleNext}
           />
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
