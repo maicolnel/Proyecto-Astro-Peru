@@ -151,12 +151,12 @@
 }
 
 
-/* === Galería (LightGallery) === */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
+
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -174,16 +174,18 @@
 
   .gallery-item-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
     @include flex-center;
     justify-content: flex-end;
     flex-direction: column;
     padding: 1.5rem;
     opacity: 0;
-    transition: opacity 0.4s ease;
     pointer-events: none;
+    transition: opacity 0.4s ease;
     span {
       color: $secondary-color;
       font-family: $font-family-headings;
@@ -194,30 +196,30 @@
     }
   }
 
-  &:hover {
-    img { transform: scale(1.1); }
-    .gallery-item-overlay { 
-      opacity: 1;
-      pointer-events: auto;
-      span { transform: translateY(0); }
-    }
-  }
+  &.active,
+  &:hover,
   &:focus {
     .gallery-item-overlay {
       opacity: 1;
       pointer-events: auto;
-      span { transform: translateY(0); }
+      span {
+        transform: translateY(0);
+      }
     }
   }
 }
 
-/* Permite overlay en tap para móviles/touch */
+// Force overlay on touch devices on tap
 @media (hover: none) and (pointer: coarse) {
-  .gallery-item:active .gallery-item-overlay,
-  .gallery-item:focus .gallery-item-overlay {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    span { transform: translateY(0); }
+  .gallery-item:active,
+  .gallery-item.active {
+    .gallery-item-overlay {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      span {
+        transform: translateY(0);
+      }
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 interface Image {
   src: string;
@@ -12,39 +12,28 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const isLoaded = useRef(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    if (!galleryRef.current || isLoaded.current) return;
-    
-    const initLightGallery = () => {
-      if (galleryRef.current && (window as any).lightGallery) {
-        const gallery = (window as any).lightGallery(galleryRef.current, {
-          selector: '.gallery-item',
-          download: false,
-          counter: true,
-        });
-        isLoaded.current = true;
-      }
-    };
-    
-    if ((window as any).lightGallery) {
-      initLightGallery();
-    } else {
-      const script = document.querySelector('#lightgallery-script');
-      script?.addEventListener('load', initLightGallery);
-    }
-    
-  }, [images]);
+  const isTouchDevice =
+    typeof window !== 'undefined' &&
+    ('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
   return (
-    <div ref={galleryRef} className="gallery-grid">
+    <div className="gallery-grid">
       {images.map((image, index) => (
         <a
           key={index}
-          className="gallery-item"
           href={image.src}
+          className={`gallery-item${activeIndex === index ? ' active' : ''}`}
+          onClick={(e) => {
+            if (isTouchDevice) {
+              e.preventDefault();
+              setActiveIndex(activeIndex === index ? null : index);
+            }
+          }}
+          onBlur={() => setActiveIndex(null)}
+          onMouseLeave={() => setActiveIndex(null)}
+          tabIndex={0}
           data-aos="zoom-in"
           data-aos-delay={index * 50}
         >
@@ -57,4 +46,5 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
     </div>
   );
 };
+
 export default Gallery;
