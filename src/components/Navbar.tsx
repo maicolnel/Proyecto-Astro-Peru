@@ -3,30 +3,32 @@ import { useState, useEffect } from 'react';
 const base = import.meta.env.BASE_URL || '/';
 
 const Navbar = () => {
-  // Inicia desde sessionStorage si existe
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    return sessionStorage.getItem('dropdownOpen') === 'true';
-  });
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [activePath, setActivePath] = useState<string>('');
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setActivePath(window.location.pathname.toLowerCase());
+      const checkMobile = () => setIsMobile(window.innerWidth < 900);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
     }
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(prev => {
-      const next = !prev;
-      sessionStorage.setItem('dropdownOpen', String(next));
-      return next;
-    });
+  const toggleMenu = () => setMenuOpen(prev => !prev);
+  const closeMenu = () => setMenuOpen(false);
+
+  // Solo para el submenú de "Descubre Perú"
+  const toggleDropdown = (e: React.MouseEvent) => {
+    if (isMobile) {
+      e.preventDefault();
+      setDropdownOpen(open => !open);
+    }
   };
-  const closeMenu = () => {
-    setMenuOpen(false);
-    sessionStorage.setItem('dropdownOpen', 'false');
-  };
+  const closeDropdown = () => setDropdownOpen(false);
 
   const getLinkClass = (path: string) =>
     activePath === path.toLowerCase() ? 'nav-link active' : 'nav-link';
@@ -44,15 +46,29 @@ const Navbar = () => {
           <a href={base} className={getLinkClass(base)} onClick={closeMenu}>Inicio</a>
           <a href={`${base}quienes-somos`} className={getLinkClass(`${base}quienes-somos`)} onClick={closeMenu}>Quiénes Somos</a>
           <a href={`${base}universidades`} className={getLinkClass(`${base}universidades`)} onClick={closeMenu}>Universidades</a>
-          <div className="nav-dropdown">
-            <span className="nav-link-dropdown-toggle" onClick={toggleMenu}>Descubre Perú ▼</span>
-            {isMenuOpen && (
-              <div className="dropdown-content">
-                <a href={`${base}cultura`} className={getLinkClass(`${base}Cultura`)} onClick={closeMenu}>Cultura</a>
-                <a href={`${base}gastronomia`} className={getLinkClass(`${base}Gastronomia`)} onClick={closeMenu}>Gastronomía</a>
-                <a href={`${base}Naturaleza`} className={getLinkClass(`${base}Naturaleza`)} onClick={closeMenu}>Naturaleza</a>
-                <a href={`${base}Turismo`} className={getLinkClass(`${base}Turismo`)} onClick={closeMenu}>Turismo</a>
-                <a href={`${base}Musica`} className={getLinkClass(`${base}Musica`)} onClick={closeMenu}>Música</a>
+          <div className={`nav-dropdown${isDropdownOpen ? ' open' : ''}`}>
+            <span
+              className="nav-link-dropdown-toggle"
+              onClick={toggleDropdown}
+              tabIndex={0}
+              onMouseEnter={() => !isMobile && setDropdownOpen(true)}
+              onMouseLeave={() => !isMobile && setDropdownOpen(false)}
+              aria-haspopup="true"
+              aria-expanded={isDropdownOpen}
+            >
+              Descubre Perú ▼
+            </span>
+            {(isDropdownOpen || !isMobile) && (
+              <div
+                className="dropdown-content"
+                onMouseEnter={() => !isMobile && setDropdownOpen(true)}
+                onMouseLeave={() => !isMobile && setDropdownOpen(false)}
+              >
+                <a href={`${base}cultura`} className={getLinkClass(`${base}cultura`)} onClick={() => { closeMenu(); closeDropdown(); }}>Cultura</a>
+                <a href={`${base}gastronomia`} className={getLinkClass(`${base}gastronomia`)} onClick={() => { closeMenu(); closeDropdown(); }}>Gastronomía</a>
+                <a href={`${base}naturaleza`} className={getLinkClass(`${base}naturaleza`)} onClick={() => { closeMenu(); closeDropdown(); }}>Naturaleza</a>
+                <a href={`${base}turismo`} className={getLinkClass(`${base}turismo`)} onClick={() => { closeMenu(); closeDropdown(); }}>Turismo</a>
+                <a href={`${base}musica`} className={getLinkClass(`${base}musica`)} onClick={() => { closeMenu(); closeDropdown(); }}>Música</a>
               </div>
             )}
           </div>

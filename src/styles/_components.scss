@@ -163,7 +163,15 @@
   border-radius: $border-radius;
   cursor: pointer;
   box-shadow: $box-shadow-light;
-  img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
   .gallery-item-overlay {
     position: absolute;
     top: 0; left: 0;
@@ -175,6 +183,7 @@
     padding: 1.5rem;
     opacity: 0;
     transition: opacity 0.4s ease;
+    pointer-events: none;
     span {
       color: $secondary-color;
       font-family: $font-family-headings;
@@ -184,12 +193,31 @@
       transition: transform 0.4s ease;
     }
   }
+
   &:hover {
     img { transform: scale(1.1); }
     .gallery-item-overlay { 
-      opacity: 1; 
+      opacity: 1;
+      pointer-events: auto;
       span { transform: translateY(0); }
     }
+  }
+  &:focus {
+    .gallery-item-overlay {
+      opacity: 1;
+      pointer-events: auto;
+      span { transform: translateY(0); }
+    }
+  }
+}
+
+/* Permite overlay en tap para móviles/touch */
+@media (hover: none) and (pointer: coarse) {
+  .gallery-item:active .gallery-item-overlay,
+  .gallery-item:focus .gallery-item-overlay {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    span { transform: translateY(0); }
   }
 }
 
