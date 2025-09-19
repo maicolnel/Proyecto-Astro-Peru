@@ -66,9 +66,9 @@ const Navbar = () => {
               >
                 <a href={`${base}cultura`} className={getLinkClass(`${base}cultura`)} onClick={() => { closeMenu(); closeDropdown(); }}>Cultura</a>
                 <a href={`${base}gastronomia`} className={getLinkClass(`${base}gastronomia`)} onClick={() => { closeMenu(); closeDropdown(); }}>Gastronomía</a>
-                <a href={`${base}naturaleza`} className={getLinkClass(`${base}naturaleza`)} onClick={() => { closeMenu(); closeDropdown(); }}>Naturaleza</a>
-                <a href={`${base}turismo`} className={getLinkClass(`${base}turismo`)} onClick={() => { closeMenu(); closeDropdown(); }}>Turismo</a>
-                <a href={`${base}musica`} className={getLinkClass(`${base}musica`)} onClick={() => { closeMenu(); closeDropdown(); }}>Música</a>
+                <a href={`${base}Naturaleza`} className={getLinkClass(`${base}Naturaleza`)} onClick={() => { closeMenu(); closeDropdown(); }}>Naturaleza</a>
+                <a href={`${base}Turismo`} className={getLinkClass(`${base}Turismo`)} onClick={() => { closeMenu(); closeDropdown(); }}>Turismo</a>
+                <a href={`${base}Musica`} className={getLinkClass(`${base}Musica`)} onClick={() => { closeMenu(); closeDropdown(); }}>Música</a>
               </div>
             )}
           </div>

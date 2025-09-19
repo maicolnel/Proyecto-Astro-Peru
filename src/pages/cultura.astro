@@ -2,22 +2,50 @@
 import Layout from '../layouts/Layout.astro';
 import Gallery from '../components/Gallery.tsx';
 
-// Prefijo base para GitHub Pages
 const base = '/Proyecto-Astro-Peru/';
 
-// Corrige TODAS las rutas de imágenes y thumbs
 const images = [
-  { src: `${base}img/cultura/danzas.jpg`, thumb: `${base}img/cultura/danzas.jpg`, alt: 'Danzas Típicas', title: 'Danzas Llenas de Historia' },
-  { src: `${base}img/cultura/textiles.jpg`, thumb: `${base}img/cultura/textiles.jpg`, alt: 'Textiles Andinos', title: 'El Arte en los Hilos' },
-  { src: `${base}img/cultura/inti-raymi.jpg`, thumb: `${base}img/cultura/inti-raymi.jpg`, alt: 'Fiesta del Inti Raymi', title: 'Fiestas Ancestrales' },
+  { src: `${base}img/cultura/danzas-tijeras.jpg`, thumb: `${base}img/cultura/danzas-tijeras.jpg`, alt: 'Danza de las tijeras', title: 'Danza de las tijeras', description: 'Danza andina declarada Patrimonio Cultural Inmaterial de la Humanidad.' },
+  { src: `${base}img/cultura/wititi.jpg`, thumb: `${base}img/cultura/wititi.jpg`, alt: 'Danza Wititi', title: 'Danza Wititi', description: 'Danza del Valle del Colca, Arequipa, declarada Patrimonio Cultural Inmaterial.' },
+  { src: `${base}img/cultura/huaconada.jpg`, thumb: `${base}img/cultura/huaconada.jpg`, alt: 'Huaconada', title: 'Huaconada', description: 'Danza ritual de Mito, en Junín, inscrita en la lista de la UNESCO.' },
+  { src: `${base}img/cultura/retablo-ayacuchano.jpg`, thumb: `${base}img/cultura/retablo-ayacuchano.jpg`, alt: 'Retablo Ayacuchano', title: 'Retablo Ayacuchano', description: 'Artesanía andina que representa escenas religiosas y de la vida cotidiana.' }, 
+  { src: `${base}img/cultura/artesania-taquile.jpg`, thumb: `${base}img/cultura/artesania-taquile.jpg`, alt: 'Textiles Taquile', title: 'Textiles de Taquile', description: 'Tradición textil en la isla de Taquile, Patrimonio de la Humanidad.' },
+  { src: `${base}img/cultura/intiraymi.jpg`, thumb: `${base}img/cultura/intiraymi.jpg`, alt: 'Inti Raymi', title: 'Inti Raymi', description: 'Gran ceremonia incaica de honor al Sol.' },
+  { src: `${base}img/cultura/pachamama.jpg`, thumb: `${base}img/cultura/pachamama.jpg`, alt: 'Ritual a la Pachamama', title: 'Ritual a la Pachamama', description: 'Ceremonia de ofrenda a la Madre Tierra practicada en los Andes.' },
+  { src: `${base}img/cultura/festival-candelaria.jpg`, thumb: `${base}img/cultura/festival-candelaria.jpg`, alt: 'Fiesta de la Candelaria', title: 'Fiesta de la Candelaria', description: 'Gran fiesta religiosa y folklórica en Puno.' },
+  { src: `${base}img/cultura/señor-milagros.jpg`, thumb: `${base}img/cultura/señor-milagros.jpg`, alt: 'Señor de los Milagros', title: 'Señor de los Milagros', description: 'Procesión religiosa más importante del Perú.' },
+  { src: `${base}img/cultura/santa-rosa.jpg`, thumb: `${base}img/cultura/santa-rosa.jpg`, alt: 'Festividad de Santa Rosa', title: 'Santa Rosa de Lima', description: 'Celebración dedicada a la primera santa de América.' },
+  { src: `${base}img/cultura/navidad-andina.jpg`, thumb: `${base}img/cultura/navidad-andina.jpg`, alt: 'Navidad Andina', title: 'Navidad Andina', description: 'Rituales navideños con tradiciones indígenas.' },
+  { src: `${base}img/cultura/ayllu.jpg`, thumb: `${base}img/cultura/ayllu.jpg`, alt: 'Ayllu', title: 'Ayllu', description: 'Organización comunitaria ancestral andina.' },
+  { src: `${base}img/cultura/costumbres-selva.jpg`, thumb: `${base}img/cultura/costumbres-selva.jpg`, alt: 'Costumbres selváticas', title: 'Costumbres selváticas', description: 'Sabiduría, ritualidad y fiestas amazónicas.' },
+  { src: `${base}img/cultura/chicha-arte.jpg`, thumb: `${base}img/cultura/chicha-arte.jpg`, alt: 'Arte Chicha', title: 'Arte Chicha', description: 'Estética y gráfica popular urbana.' },
+  { src: `${base}img/cultura/lucha-inca.jpg`, thumb: `${base}img/cultura/lucha-inca.jpg`, alt: 'Recreación ritual inca', title: 'Recreación ritual inca', description: 'Recreaciones y ritos ancestrales.' },
+  { src: `${base}img/cultura/tejedoras.jpg`, thumb: `${base}img/cultura/tejedoras.jpg`, alt: 'Tejedoras de los Andes', title: 'Tejedoras de los Andes', description: 'Mujeres guardianas del arte textil tradicional.' },
+  { src: `${base}img/cultura/mitos-leyendas.jpg`, thumb: `${base}img/cultura/mitos-leyendas.jpg`, alt: 'Mitos y leyendas', title: 'Mitos y leyendas', description: 'Narraciones ancestrales y relatos populares.' },
+  { src: `${base}img/cultura/ceramica-precolombina.jpg`, thumb: `${base}img/cultura/ceramica-precolombina.jpg`, alt: 'Cerámica precolombina', title: 'Cerámica precolombina', description: 'Arte milenario de modelado de barro.' },
+  { src: `${base}img/cultura/quipu.jpg`, thumb: `${base}img/cultura/quipu.jpg`, alt: 'Quipu', title: 'Quipu', description: 'Instrumento de registro incaico a base de nudos.' },
+  { src: `${base}img/cultura/murales.jpg`, thumb: `${base}img/cultura/murales.jpg`, alt: 'Murales urbanos', title: 'Murales peruanos', description: 'Arte visual en espacios públicos.' },
+  { src: `${base}img/cultura/mascaras.jpg`, thumb: `${base}img/cultura/mascaras.jpg`, alt: 'Máscaras festivas', title: 'Máscaras festivas', description: 'Empleadas en varias danzas y comparsas.' },
+  { src: `${base}img/cultura/orfebreria.jpg`, thumb: `${base}img/cultura/orfebreria.jpg`, alt: 'Orfebrería ancestral', title: 'Orfebrería', description: 'Arte en oro, plata y cobre de origen indígena.' },
+  { src: `${base}img/cultura/pintura-mural.jpg`, thumb: `${base}img/cultura/pintura-mural.jpg`, alt: 'Pintura mural', title: 'Pintura mural', description: 'Representaciones pictóricas de la vida y creencias.' },
+  { src: `${base}img/cultura/cerros-sagrados.jpg`, thumb: `${base}img/cultura/cerros-sagrados.jpg`, alt: 'Cerros sagrados', title: 'Cerros sagrados', description: 'Lugares de culto y ritualidad.' },
+  { src: `${base}img/cultura/curso-ceramica.jpg`, thumb: `${base}img/cultura/curso-ceramica.jpg`, alt: 'Curso cerámica', title: 'Talleres de cerámica', description: 'Seculares espacios de creación artística.' },
+  { src: `${base}img/cultura/huacas.jpg`, thumb: `${base}img/cultura/huacas.jpg`, alt: 'Huacas', title: 'Huacas', description: 'Templos y centros ceremoniales preincas e incas.' },
+  { src: `${base}img/cultura/mate-burilado.jpg`, thumb: `${base}img/cultura/mate-burilado.jpg`, alt: 'Mate burilado', title: 'Mate burilado', description: 'Calabazas grabadas a mano con escenas tradicionales.' },
+  { src: `${base}img/cultura/feria-artesanal.jpg`, thumb: `${base}img/cultura/feria-artesanal.jpg`, alt: 'Feria artesanal', title: 'Feria artesanal', description: 'Punto de encuentro de artesanos y productos tradicionales.' },
+  { src: `${base}img/cultura/minoria-afroperuana.jpg`, thumb: `${base}img/cultura/minoria-afroperuana.jpg`, alt: 'Cultura afroperuana', title: 'Cultura afroperuana', description: 'Legado y expresiones de la comunidad afroperuana.' },
+  { src: `${base}img/cultura/instrumentos-tradicionales.jpg`, thumb: `${base}img/cultura/instrumentos-tradicionales.jpg`, alt: 'Instrumentos tradicionales', title: 'Instrumentos tradicionales', description: 'Zampoñas, quenas y charangos (representados como cultura, sin centrarse en música).' },
+  { src: `${base}img/cultura/textiles-urus.jpg`, thumb: `${base}img/cultura/textiles-urus.jpg`, alt: 'Textiles Uros', title: 'Textiles de los Uros', description: 'Técnicas ancestrales del pueblo Uro en el Titicaca.' },
+  { src: `${base}img/cultura/recitadores-decoplas.jpg`, thumb: `${base}img/cultura/recitadores-decoplas.jpg`, alt: 'Recitadores', title: 'Recitadores de coplas', description: 'Versos orales transmitidos de generación en generación.' },
+  { src: `${base}img/cultura/batan.jpg`, thumb: `${base}img/cultura/batan.jpg`, alt: 'Batán', title: 'Batán', description: 'Piedra de moler empleada en la historia y vida cotidiana.' }
 ];
----
+
 
 <Layout title="Cultura Peruana">
   <div class="page-container">
     <header class="page-header" data-aos="fade-in">
       <h1>Cultura Viva</h1>
-      <p>Un legado milenario que se respira en cada rincón del país.</p>
+      <p>Un legado que resuena desde la costa hasta la selva y las alturas.</p>
     </header>
     <section class="section-container">
       <Gallery images={images} client:visible />

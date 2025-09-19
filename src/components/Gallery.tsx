@@ -5,6 +5,7 @@ interface Image {
   thumb: string;
   alt: string;
   title: string;
+  description?: string; // Nueva propiedad para info adicional
 }
 
 interface GalleryProps {
@@ -39,7 +40,10 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
         >
           <img src={image.thumb} alt={image.alt} loading="lazy" />
           <div className="gallery-item-overlay">
-            <span>{image.title}</span>
+            <span className="gallery-title">{image.title}</span>
+            {image.description && (
+              <small className="gallery-description">{image.description}</small>
+            )}
           </div>
         </a>
       ))}
