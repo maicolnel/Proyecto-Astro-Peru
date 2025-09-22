@@ -6,13 +6,22 @@ import VideoPlayer from '../components/VideoPlayer.tsx';
 const base = '/Proyecto-Astro-Peru/';
 
 const images = [
-  { src: `${base}img/naturaleza/amazonas.jpg`, thumb: `${base}img/naturaleza/amazonas.jpg`, alt: 'Río Amazonas', title: 'Selva Amazónica' },
-  { src: `${base}img/naturaleza/andes.jpg`, thumb: `${base}img/naturaleza/andes.jpg`, alt: 'Cordillera de los Andes', title: 'Andes Majestuosos' },
-  { src: `${base}img/naturaleza/lago-titicaca.jpg`, thumb: `${base}img/naturaleza/lago-titicaca.jpg`, alt: 'Lago Titicaca', title: 'Lago Titicaca, Místico' },
-  { src: `${base}img/naturaleza/colca.jpg`, thumb: `${base}img/naturaleza/colca.jpg`, alt: 'Cañón del Colca', title: 'La Profundidad del Colca' },
-  { src: `${base}img/naturaleza/desierto-ica.jpg`, thumb: `${base}img/naturaleza/desierto-ica.jpg`, alt: 'Desierto de Ica', title: 'El Oasis de Huacachina' },
-  { src: `${base}img/naturaleza/selva-central.jpg`, thumb: `${base}img/naturaleza/selva-central.jpg`, alt: 'Selva Central', title: 'Corazón Verde del Perú' },
+  { src: `${base}img/naturaleza/amazonas.jpg`, thumb: `${base}img/naturaleza/amazonas.jpg`, alt: 'Río Amazonas', title: 'Selva Amazónica', description: 'La selva amazónica, hogar de una biodiversidad increíble.' },
+  { src: `${base}img/naturaleza/andes.jpg`, thumb: `${base}img/naturaleza/andes.jpg`, alt: 'Cordillera de los Andes', title: 'Andes Majestuosos', description: 'La cordillera más larga de mundo, testigo de culturas ancestrales.' },
+  { src: `${base}img/naturaleza/lago-titicaca.jpg`, thumb: `${base}img/naturaleza/lago-titicaca.jpg`, alt: 'Lago Titicaca', title: 'Lago Titicaca, Místico', description: 'El lago navegable más alto, con pueblos y tradiciones únicas.' },
+  { src: `${base}img/naturaleza/colca.jpg`, thumb: `${base}img/naturaleza/colca.jpg`, alt: 'Cañón del Colca', title: 'Cañón del Colca', description: 'Un cañón profundo donde el majestuoso cóndor vuela libre.' },
+  { src: `${base}img/naturaleza/desierto-ica.jpg`, thumb: `${base}img/naturaleza/desierto-ica.jpg`, alt: 'Desierto de Ica', title: 'Desierto de Ica', description: 'Dunas y oasis para aventuras y paisajes únicos.' },
+  { src: `${base}img/naturaleza/selva-central.jpg`, thumb: `${base}img/naturaleza/selva-central.jpg`, alt: 'Selva Central', title: 'Selva Central', description: 'Pulmón verde de Perú, con ríos y diversidad natural.' },
+  { src: `${base}img/naturaleza/machu-picchu.jpg`, thumb: `${base}img/naturaleza/machu-picchu.jpg`, alt: 'Machu Picchu', title: 'Machu Picchu', description: 'Maravilla del mundo y símbolo de la cultura Inca.' },
+  { src: `${base}img/naturaleza/vinicunca.jpg`, thumb: `${base}img/naturaleza/vinicunca.jpg`, alt: 'Montaña de 7 Colores', title: 'Vinicunca', description: 'Montaña multicolor que deslumbra con su belleza.' },
+  { src: `${base}img/naturaleza/huacachina.jpg`, thumb: `${base}img/naturaleza/huacachina.jpg`, alt: 'Oasis Huacachina', title: 'Oasis Huacachina', description: 'Un oasis único en medio del desierto peruano.' },
+  { src: `${base}img/naturaleza/wilcahuain.jpg`, thumb: `${base}img/naturaleza/wilcahuain.jpg`, alt: 'Sitio arqueológico Wilcahuain', title: 'Wilcahuain', description: 'Ruinas Incas en plena naturaleza selvática.' },
+  { src: `${base}img/naturaleza/laguna-69.jpg`, thumb: `${base}img/naturaleza/laguna-69.jpg`, alt: 'Laguna 69', title: 'Laguna 69', description: 'Laguna de agua cristalina en la Cordillera Blanca.' },
+  { src: `${base}img/naturaleza/ballestas.jpg`, thumb: `${base}img/naturaleza/ballestas.jpg`, alt: 'Islas Ballestas', title: 'Islas Ballestas', description: 'Santuario marino con fauna espectacular.' },
+  { src: `${base}img/naturaleza/Catarata-Gocta.jpg`, thumb: `${base}img/naturaleza/Catarata-Gocta.jpg`, alt: 'Catarata Gocta', title: 'Catarata Gocta', description: 'Catarata majestuosa en la Cordillera Blanca.' },
+  { src: `${base}img/naturaleza/lomas-costeras.jpg`, thumb: `${base}img/naturaleza/lomas-costeras.jpg`, alt: 'Lomas Costeras del Perú', title: 'Lomas Costeras', description: 'Ecosistema singular con flora y fauna adaptadas al desierto.' },
 ];
+
 
 const videoNaturaleza = `${base}videos/naturaleza.mp4`;
 ---

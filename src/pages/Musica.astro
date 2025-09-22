@@ -6,13 +6,28 @@ import MusicList from '../components/MusicList.tsx';
 const base = '/Proyecto-Astro-Peru/';
 
 const instruments = [
-  { src: `${base}img/musica/cajon.jpg`, thumb: `${base}img/musica/cajon.jpg`, alt: 'Cajón Peruano', title: 'El Cajón: Ritmo Afroperuano' },
-  { src: `${base}img/musica/quena.jpg`, thumb: `${base}img/musica/quena.jpg`, alt: 'Quena Andina', title: 'La Quena: Viento de los Andes' },
-  { src: `${base}img/musica/charango.jpg`, thumb: `${base}img/musica/charango.jpg`, alt: 'Charango', title: 'El Charango: Corazón de Cuerdas' },
-  { src: `${base}img/musica/zampoña.jpg`, thumb: `${base}img/musica/zampoña.jpg`, alt: 'Zampoña', title: 'La Zampona: Ritmo de la Sierra' },
-  { src: `${base}img/musica/arpa-andina.jpg`, thumb: `${base}img/musica/arpa-andina.jpg`, alt: 'Arpa Andina', title: 'El Arpa Andina: Dulzura y Tradición' },
-  { src: `${base}img/musica/guitarra-criolla.jpg`, thumb: `${base}img/musica/guitarra-criolla.jpg`, alt: 'Guitarra', title: 'La Guitarra: Voz de los Andes' },
+  { src: `${base}img/musica/cajon.jpg`, thumb: `${base}img/musica/cajon.jpg`, alt: 'Cajón Peruano', title: 'El Cajón: Ritmo Afroperuano', description: 'Instrumento de percusión de origen afroperuano, símbolo del festejo y la música criolla.' },
+  { src: `${base}img/musica/quena.jpg`, thumb: `${base}img/musica/quena.jpg`, alt: 'Quena Andina', title: 'La Quena: Viento de los Andes', description: 'Flauta de siete agujeros típica de la música andina, con un sonido melódico y dulce.' },
+  { src: `${base}img/musica/charango.jpg`, thumb: `${base}img/musica/charango.jpg`, alt: 'Charango', title: 'El Charango: Corazón de Cuerdas', description: 'Pequeña guitarra andina con cinco pares de cuerdas, usada en valses y huaynos.' },
+  { src: `${base}img/musica/zampoña.jpg`, thumb: `${base}img/musica/zampoña.jpg`, alt: 'Zampoña', title: 'La Zampona: Ritmo de la Sierra', description: 'Conjunto de tubos paralelos que forman un instrumento de viento tradicional andino.' },
+  { src: `${base}img/musica/arpa-andina.jpg`, thumb: `${base}img/musica/arpa-andina.jpg`, alt: 'Arpa Andina', title: 'El Arpa Andina: Dulzura y Tradición', description: 'Instrumento de cuerdas adaptado en los Andes, base de huaynos y melodías tradicionales.' },
+  { src: `${base}img/musica/guitarra-criolla.jpg`, thumb: `${base}img/musica/guitarra-criolla.jpg`, alt: 'Guitarra Criolla', title: 'La Guitarra: Voz de los Andes', description: 'Instrumento de cuerdas usado en géneros como la marinera, vals y música criolla peruana.' },
+  { src: `${base}img/musica/pututo.jpg`, thumb: `${base}img/musica/pututo.jpg`, alt: 'Pututo', title: 'El Pututo: Llamado ancestral', description: 'Instrumento de viento hecho con caracolas marinas, usado en ceremonias y fiestas andinas.' },
+  { src: `${base}img/musica/clarin-cajamarquino.jpg`, thumb: `${base}img/musica/clarin-cajamarquino.jpg`, alt: 'Clarín Cajamarquino', title: 'El Clarín Cajamarquino: Sonido monumental', description: 'Trompeta de hasta 4 metros, patrimonio cultural de Cajamarca.' },
+  { src: `${base}img/musica/bandurria-cusquena.jpg`, thumb: `${base}img/musica/bandurria-cusquena.jpg`, alt: 'Bandurria Cusqueña', title: 'La Bandurria Cusqueña: Dulce resonar', description: 'Instrumento de cuerda usado en carnavales y festividades andinas del Cusco.' },
+  { src: `${base}img/musica/guira.jpg`, thumb: `${base}img/musica/guira.jpg`, alt: 'Guira', title: 'La Güira: Percusión vibrante', description: 'Instrumento rítmico típico en la costa peruana, usado en música afroperuana.' },
+  { src: `${base}img/musica/cajita-ritmica.jpg`, thumb: `${base}img/musica/cajita-ritmica.jpg`, alt: 'Cajita Rítmica', title: 'Cajita Rítmica: Latidos del Perú', description: 'Instrumento pequeño de percusión con sonido cortante, popular en la costa.' },
+  { src: `${base}img/musica/maracas.jpg`, thumb: `${base}img/musica/maracas.jpg`, alt: 'Maracas', title: 'Maracas: Sonidos de tradición', description: 'Instrumento de percusión hecho con semillas seca, usado en danzas y festivales.' },
+  { src: `${base}img/musica/ocarina.jpg`, thumb: `${base}img/musica/ocarina.jpg`, alt: 'Ocarina', title: 'La Ocarina: Voz del viento', description: 'Instrumento de viento con profundo significado ancestral y sonido suave.' },
+  { src: `${base}img/musica/bombo.jpg`, thumb: `${base}img/musica/bombo.jpg`, alt: 'Bombo Peruano', title: 'El Bombo Peruano: Pulso de la tierra', description: 'Tambor grande que marca el ritmo en festivales y música tradicional.' },
+  { src: `${base}img/musica/sikus.jpg`, thumb: `${base}img/musica/sikus.jpg`, alt: 'Sikus', title: 'Sikus: Melodías de tubos', description: 'Instrumento parecido a la zampoña, típico en regiones andinas.' },
+  { src: `${base}img/musica/caja.jpg`, thumb: `${base}img/musica/caja.jpg`, alt: 'Caja Peruana', title: 'La Caja: Sonido afroperuano', description: 'Tambor pequeño con sonido agudo, esencial en música criolla.' },
+  { src: `${base}img/musica/tinya.jpg`, thumb: `${base}img/musica/tinya.jpg`, alt: 'Tinya', title: 'La Tinya: Tambor andino', description: 'Pequeño tambor usado en danzas tradicionales andinas.' },
+  { src: `${base}img/musica/chajchas.jpg`, thumb: `${base}img/musica/chajchas.jpg`, alt: 'Chajchas', title: 'Las Chajchas: Sonidos de cerdas', description: 'Sonajeros hechos con uñas o cerdas de animales, usados en rituales.' },
+  { src: `${base}img/musica/wajrapukara.jpg`, thumb: `${base}img/musica/wajrapukara.jpg`, alt: 'Wajrapukara', title: 'El Wajrapukara: Instrumento ancestral', description: 'Instrumento de viento de madera usado en ceremonias andinas.' },
+  { src: `${base}img/musica/chirimia.jpg`, thumb: `${base}img/musica/chirimia.jpg`, alt: 'Chirimía', title: 'La Chirimía: Sonidos folclóricos', description: 'Instrumento de viento que acompaña muchas danzas folclóricas peruanas.' }
 ];
+
 
 const tracks = [
   { id: 'la-anaconda', src: `${base}music/La anaconda.mp3`, title: 'La Anaconda', description: 'Clásico de la música tropical peruana.' },

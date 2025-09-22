@@ -6,13 +6,148 @@ import VideoPlayer from '../components/VideoPlayer.tsx';
 const base = '/Proyecto-Astro-Peru/';
 
 const images = [
-  { src: `${base}img/turismo/machu-picchu.jpg`, thumb: `${base}img/turismo/machu-picchu.jpg`, alt: 'Machu Picchu', title: 'Machu Picchu: Joya Inca' },
-  { src: `${base}img/turismo/nazca.jpg`, thumb: `${base}img/turismo/nazca.jpg`, alt: 'Líneas de Nazca', title: 'Misterio de las Líneas de Nazca' },
-  { src: `${base}img/turismo/cusco.jpg`, thumb: `${base}img/turismo/cusco.jpg`, alt: 'Cusco', title: 'Cusco: El Ombligo del Mundo' },
-  { src: `${base}img/turismo/arequipa.jpg`, thumb: `${base}img/turismo/arequipa.jpg`, alt: 'Arequipa', title: 'Arequipa: La Ciudad Blanca' },
-  { src: `${base}img/turismo/trujillo.jpg`, thumb: `${base}img/turismo/trujillo.jpg`, alt: 'Trujillo', title: 'Trujillo y la Ruta Moche' },
-  { src: `${base}img/turismo/cajamarca.jpg`, thumb: `${base}img/turismo/cajamarca.jpg`, alt: 'Cajamarca', title: 'Cajamarca: Historia y Carnaval' },
+  {
+    src: `${base}img/turismo/machu-picchu.jpg`,
+    thumb: `${base}img/turismo/machu-picchu.jpg`,
+    alt: 'Machu Picchu',
+    title: 'Machu Picchu: Joya Inca',
+    description: 'Antigua ciudad inca en las montañas, una de las siete maravillas del mundo.'
+  },
+  {
+    src: `${base}img/turismo/nazca.jpg`,
+    thumb: `${base}img/turismo/nazca.jpg`,
+    alt: 'Líneas de Nazca',
+    title: 'Misterio de las Líneas de Nazca',
+    description: 'Grandes geoglifos antiguos visibles desde el aire, llenos de historia y misterio.'
+  },
+  {
+    src: `${base}img/turismo/cusco.jpg`,
+    thumb: `${base}img/turismo/cusco.jpg`,
+    alt: 'Cusco',
+    title: 'Cusco: El Ombligo del Mundo',
+    description: 'Centro histórico con arquitectura inca y colonial, puerta a Machu Picchu.'
+  },
+  {
+    src: `${base}img/turismo/arequipa.jpg`,
+    thumb: `${base}img/turismo/arequipa.jpg`,
+    alt: 'Arequipa',
+    title: 'Arequipa: La Ciudad Blanca',
+    description: 'Ciudad colonial rodeada por volcanes, famosa por su arquitectura en sillar blanco.'
+  },
+  {
+    src: `${base}img/turismo/trujillo.jpg`,
+    thumb: `${base}img/turismo/trujillo.jpg`,
+    alt: 'Trujillo',
+    title: 'Trujillo y la Ruta Moche',
+    description: 'Ciudad histórica cercana a sitios prehispánicos y playas reconocidas.'
+  },
+  {
+    src: `${base}img/turismo/cajamarca.jpg`,
+    thumb: `${base}img/turismo/cajamarca.jpg`,
+    alt: 'Cajamarca',
+    title: 'Cajamarca: Historia y Carnaval',
+    description: 'Cuna de importantes eventos históricos y festividades tradicionales.'
+  },
+  {
+    src: `${base}img/turismo/lima.jpg`,
+    thumb: `${base}img/turismo/lima.jpg`,
+    alt: 'Lima',
+    title: 'Lima: Capital vibrante',
+    description: 'Capital nacional, mezcla de modernidad, historia y gastronomía mundialmente reconocida.'
+  },
+  {
+    src: `${base}img/turismo/paracas.jpg`,
+    thumb: `${base}img/turismo/paracas.jpg`,
+    alt: 'Paracas',
+    title: 'Paracas: Reserva natural',
+    description: 'Zona costera con una reserva natural marina ideal para ecoturismo.'
+  },
+  {
+    src: `${base}img/turismo/huacachina.jpg`,
+    thumb: `${base}img/turismo/huacachina.jpg`,
+    alt: 'Huacachina',
+    title: 'Huacachina: Oasis en el desierto',
+    description: 'Famoso oasis rodeado de dunas, con actividades de aventura y relajación.'
+  },
+  {
+    src: `${base}img/turismo/puno.jpg`,
+    thumb: `${base}img/turismo/puno.jpg`,
+    alt: 'Puno y Lago Titicaca',
+    title: 'Puno: Puerta al Lago Titicaca',
+    description: 'Ciudad junto al lago navegable más alto, con cultura viva y paisajes únicos.'
+  },
+  {
+    src: `${base}img/turismo/colca.jpg`,
+    thumb: `${base}img/turismo/colca.jpg`,
+    alt: 'Cañón del Colca',
+    title: 'Cañón del Colca: Cóndores y vistas',
+    description: 'Uno de los cañones más profundos del mundo, famoso por la vista del cóndor.'
+  },
+  {
+    src: `${base}img/turismo/chan-chan.jpg`,
+    thumb: `${base}img/turismo/chan-chan.jpg`,
+    alt: 'Chan Chan',
+    title: 'Chan Chan: Ciudad de barro',
+    description: 'Ruinas arqueológicas de la cultura Chimú, una de las ciudades prehispánicas más grandes.'
+  },
+  {
+    src: `${base}img/turismo/leymebamba.jpg`,
+    thumb: `${base}img/turismo/leymebamba.jpg`,
+    alt: 'Leymebamba',
+    title: 'Leymebamba: Museo de Momias',
+    description: 'Museo y sitio arqueológico con una rica colección de momias y artefactos.'
+  },
+  {
+    src: `${base}img/turismo/monteverde.jpg`,
+    thumb: `${base}img/turismo/monteverde.jpg`,
+    alt: 'Monteverde',
+    title: 'Monteverde: Naturaleza y aventura',
+    description: 'Zona de aves y biodiversidad ideal para actividades al aire libre.'
+  },
+  {
+    src: `${base}img/turismo/parque-nacional-manu.jpg`,
+    thumb: `${base}img/turismo/parque-nacional-manu.jpg`,
+    alt: 'Parque Nacional Manu',
+    title: 'Parque Nacional Manu: Biodiversidad',
+    description: 'Reserva natural con una gran variedad de especies endémicas y ecosistemas.'
+  },
+  {
+    src: `${base}img/turismo/ollantaytambo.jpg`,
+    thumb: `${base}img/turismo/ollantaytambo.jpg`,
+    alt: 'Ollantaytambo',
+    title: 'Ollantaytambo: Patrimonio vivo',
+    description: 'Sitio arqueológico y pueblo con tradición viva de la época Inca.'
+  },
+  {
+    src: `${base}img/turismo/cusco-plaza.jpg`,
+    thumb: `${base}img/turismo/cusco-plaza.jpg`,
+    alt: 'Plaza de Armas Cusco',
+    title: 'Plaza de Armas Cusco: Centro histórico',
+    description: 'Plaza principal del Cusco, corazón de la ciudad y punto turístico fundamental.'
+  },
+  {
+    src: `${base}img/turismo/catedral-lima.jpg`,
+    thumb: `${base}img/turismo/catedral-lima.jpg`,
+    alt: 'Catedral de Lima',
+    title: 'Catedral de Lima: Historia y arte',
+    description: 'Templo emblemático que refleja la historia y el arte colonial de Lima.'
+  },
+  {
+    src: `${base}img/turismo/huchuyqosqo.jpg`,
+    thumb: `${base}img/turismo/huchuyqosqo.jpg`,
+    alt: 'Huchuy Qosqo',
+    title: 'Huchuy Qosqo: Ruinas sorprendentes',
+    description: 'Ruinas incas en un entorno natural, destino para trekking y aventura.'
+  },
+  {
+    src: `${base}img/turismo/picchu-picchu.jpg`,
+    thumb: `${base}img/turismo/picchu-picchu.jpg`,
+    alt: 'Picchu Picchu',
+    title: 'Picchu Picchu: Naturaleza y cultura',
+    description: 'Un rincón que combina paisajes naturales con herencia cultural milenaria.'
+  }
 ];
+
 
 const videoTurismo = `${base}videos/turismo.mp4`;
 const videoTurismo2 = `${base}videos/turismo2.mp4`;
